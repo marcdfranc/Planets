@@ -16,7 +16,7 @@ public static class ApplicationServiceExtensions
 
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "HKL API", Version = "v1" });            
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "HKL API", Version = "v1" });
         });
 
         services.AddDbContext<DataContext>(options =>
@@ -55,9 +55,21 @@ public static class ApplicationServiceExtensions
             // or from the environment variable from Heroku, use it to set up your DbContext.
             options.UseNpgsql(connStr);
         });
-        
+
         services.AddMediatR(typeof(Create.Handler).Assembly);
         services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+
+        services.AddCors(opt =>
+        {
+            opt.AddPolicy(name: "CorsPolicy", policy => policy
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithOrigins("http://localhost:3000")
+            );
+        });
+
 
         return services;
     }
