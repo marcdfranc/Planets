@@ -20,4 +20,18 @@ public class Planet
     public decimal Diameter { get; set; }
     
     public string? Notes { get; set; }
+
+    [Required]
+    [MaxLength(250)]
+    public string? ImagePath { get; set; }
+
+    [Required]
+    [MaxLength(250)]
+    public string? ImageIconPath { get; set; }
+
+    [Required]
+    public int Position { get; set; }
+
+    [Required]
+    public bool Circular { get; set; } = true;
 }

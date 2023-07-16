@@ -2,7 +2,6 @@
 using Application.Core.Dtos;
 using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Planets;

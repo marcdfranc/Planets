@@ -2,7 +2,7 @@
 
 namespace Api.Extensions;
 
-public static class HttpExtensions
+public static class HttpExtension
 {
     public static void AddPaginationHeader(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems, int totalPages)
     {

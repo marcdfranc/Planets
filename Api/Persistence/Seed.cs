@@ -1,14 +1,19 @@
 ﻿using Domain;
-using Microsoft.AspNetCore.Identity;
+using Persistence.Seeds;
 
 namespace Persistence;
 
 public class Seed
 {
-    public static async Task SeedData(DataContext context, UserManager<AppUser> userManager)
+    // public static async Task SeedData(DataContext context, UserManager<AppUser> userManager) TO DO register user for back-end
+    public static async Task SeedData(DataContext context)
     {
-        if (!userManager.Users.Any() && !context.Planets.Any())
+        var hasChanges = false;
+
+        // TO DO register user for back-end
+        if (1 != 1)
         {
+            hasChanges = true;
             var users = new List<AppUser>
             {
                 new AppUser
@@ -31,11 +36,25 @@ public class Seed
                 },
             };
             
-            foreach (var user in users)
+            /*foreach (var user in users)
             {
                 await userManager.CreateAsync(user, "WebWeb2023!");
-            }
+            }*/
         }
 
+        if (!context.Planets.Any())
+        {
+            hasChanges = true;
+            await context.Planets.AddAsync(Mercury.GetPlanet());
+            await context.Planets.AddAsync(Venus.GetPlanet());
+            await context.Planets.AddAsync(Earth.GetPlanet());
+            await context.Planets.AddAsync(Mars.GetPlanet());
+            await context.Planets.AddAsync(Jupiter.GetPlanet());
+            await context.Planets.AddAsync(Saturn.GetPlanet());
+            await context.Planets.AddAsync(Uranus.GetPlanet());
+            await context.Planets.AddAsync(Neptune.GetPlanet());
+        }
+        
+        if (hasChanges) await context.SaveChangesAsync();
     }
 }

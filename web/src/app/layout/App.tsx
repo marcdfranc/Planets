@@ -3,11 +3,12 @@ import '../../App.css';
 import { Planet } from '../models/Planet';
 import agent from '../services/agent';
 import { Media, MediaContextProvider } from '../models/Common';
-import { Segment } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import { Navigation } from './menu/Navigation';
 import { ImageDisplay } from './ImageDisplay';
 import PageHeader from '../../features/PageHeader';
 import Home from '../../features/Home';
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
 	const [planets, setPlanets] = useState<Planet[]>([]);
@@ -51,9 +52,10 @@ const App = () => {
 						subHeaderContent={subHeaderContent}
 					/>
 				</Segment>
-			 
-				<Home mobile={false} />				
 			</Media>
+			<Container>				
+				<Outlet />
+			</Container>
 			<Media lessThan='desktop'>
 				<h1>Mobile Version</h1>
 			</Media> 

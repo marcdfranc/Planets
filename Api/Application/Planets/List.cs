@@ -28,6 +28,7 @@ public class List
         {
             var query = _context.Planets
                 .ProjectTo<PlanetResponse>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Position)
                 .AsQueryable();
 
             return Result<PagedList<PlanetResponse>>.Success(

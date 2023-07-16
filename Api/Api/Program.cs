@@ -1,16 +1,25 @@
 using Api.Extensions;
+using Api.Middleware;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Converters;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(o =>
+{
+    o.SerializerSettings.Converters.Add(new StringEnumConverter
+    {
+        CamelCaseText = true
+    });
+});
 
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddSwaggerServices();
 // builder.Services.AddIdentityServices(builder.Configuration);
-builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -21,8 +30,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
-app.UseAuthorization();
+app.UseMiddleware<ApiKeyMiddleware>();
+
+// app.UseAuthorization();
 
 app.MapControllers();
 
@@ -35,9 +47,9 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<DataContext>();
         await context.Database.MigrateAsync();
 
-        // var userManager = services.GetRequiredService<UserManager<AppUser>>();
+        // var userManager = services.GetRequiredService<UserManager<AppUser>>(); TO DO register users for back-end
 
-        //await Seed.SeedData(context, userManager);
+        await Seed.SeedData(context);
     }
     catch (Exception e)
     {

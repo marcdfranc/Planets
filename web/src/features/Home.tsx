@@ -4,11 +4,9 @@ import { useStore } from '../app/stores/store';
 import { PageHeaderAttributesValues } from '../app/models/PageHeaderAttributes';
 import { observer } from 'mobx-react-lite';
 
-interface Props {
-	mobile: boolean;
-}
 
-const Home = ({ mobile }: Props) => {
+
+const Home = () => {
 	const {pageHeaderStore : {setHeader}} = useStore();
 	const headerContent = 'Solar system';
 	const subHeaderContent = 'Characteristics of its planets.';
@@ -21,7 +19,7 @@ const Home = ({ mobile }: Props) => {
 	}, [setHeader])
 
 	return (		
-		<Segment style={{ padding: '8em 0em' }} vertical inverted={false}>
+		<Segment style={{ padding: '4em 0em' }} vertical inverted={false}>
 			<Container text>
 				<Header as='h3' style={{ fontSize: '2em' }}>
 					Presentation, the Sun is the star

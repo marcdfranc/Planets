@@ -4,21 +4,13 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Persistence;
-using System.Collections.Generic;
 
 namespace Api.Extensions;
 
-public static class ApplicationServiceExtensions
+public static class ApplicationServiceExtension
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
-        services.AddEndpointsApiExplorer();
-
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "HKL API", Version = "v1" });
-        });
-
         services.AddDbContext<DataContext>(options =>
         {
             var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
