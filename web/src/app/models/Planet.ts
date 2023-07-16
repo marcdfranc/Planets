@@ -7,6 +7,11 @@ export interface Planet {
 	notes: string;
 }
 
+export class Planet implements Planet {
+	constructor(init: PlanetFormValues) {
+		Object.assign(this, init);		
+	}
+}
 
 export class PlanetFormValues {
 	id?: string = undefined;
