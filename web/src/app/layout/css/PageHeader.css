@@ -1,0 +1,13 @@
+.ui.segment.PageHeader {
+	background-color: transparent;
+	height: 350px;	
+	overflow: hidden;
+	border-bottom: 0;
+	border-bottom-color: transparent;
+}
+
+.PageHeader img {
+	position: relative;
+	height: 400px;
+	right: -200px;
+}
