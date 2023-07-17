@@ -1,11 +1,7 @@
 ﻿using Api.Filters;
-using Domain;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
-using Persistence;
-using System.Net;
 
 namespace Api.Extensions;
 

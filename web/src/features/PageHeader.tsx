@@ -5,13 +5,10 @@ import { useStore } from '../app/stores/store';
 
 
 interface Props {
-	mobile: boolean
-	headerContent: string;
-	subHeaderContent?: string;
-	imgUrl?: string;
+	mobile: boolean	
 }
 
-const PageHeader = ({ mobile, imgUrl }: Props) => {
+const PageHeader = ({ mobile }: Props) => {
 	const {pageHeaderStore : {attributes}} = useStore();
 
 	return (
@@ -27,7 +24,6 @@ const PageHeader = ({ mobile, imgUrl }: Props) => {
 					marginTop: '1.5em' // mobile ? '1.5em' : '3em',
 				}}
 			/>
-
 			{attributes?.subContent ? (<>
 				<Header
 					as='h2'
@@ -39,10 +35,10 @@ const PageHeader = ({ mobile, imgUrl }: Props) => {
 						marginTop: mobile ? '0.5em' : '1.5em',
 					}}
 				/>
-			</>) : null}
+			</>) : null}			
 
-			{imgUrl ? (<Image
-				src={imgUrl}
+			{attributes?.imgUrl ? (<Image
+				src={attributes.imgUrl}
 				floated='right'
 			/>) : null}
 		</Segment>

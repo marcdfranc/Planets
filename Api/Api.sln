@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{7F671BFF-DCD6-4313-939B-CCB229FD802B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{96B2CAEF-B19D-4286-B88D-F61BD0FA62D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{96B2CAEF-B19D-4286-B88D-F61BD0FA62D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCliente", "XCliente\XCliente.csproj", "{317E656E-8891-4E8A-B962-30ACF646F647}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XTests", "XTests\XTests.csproj", "{3E995A65-EB1E-4747-BAFB-6E97E4A23D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{96B2CAEF-B19D-4286-B88D-F61BD0FA62D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96B2CAEF-B19D-4286-B88D-F61BD0FA62D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96B2CAEF-B19D-4286-B88D-F61BD0FA62D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{317E656E-8891-4E8A-B962-30ACF646F647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{317E656E-8891-4E8A-B962-30ACF646F647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{317E656E-8891-4E8A-B962-30ACF646F647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{317E656E-8891-4E8A-B962-30ACF646F647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E995A65-EB1E-4747-BAFB-6E97E4A23D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E995A65-EB1E-4747-BAFB-6E97E4A23D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E995A65-EB1E-4747-BAFB-6E97E4A23D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E995A65-EB1E-4747-BAFB-6E97E4A23D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

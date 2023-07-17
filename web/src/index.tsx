@@ -4,18 +4,20 @@ import 'semantic-ui-css/semantic.min.css'
 import './app/layout/style.css';
 import './app/layout/css/MainMenu.css';
 import './app/layout/css/PageHeader.css';
-import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './app/router/Routes';
+import { StoreContext, store } from './app/stores/store';
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <StoreContext.Provider value={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </StoreContext.Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

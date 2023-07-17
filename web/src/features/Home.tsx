@@ -3,20 +3,21 @@ import { Button, Container, Header, Segment } from 'semantic-ui-react';
 import { useStore } from '../app/stores/store';
 import { PageHeaderAttributesValues } from '../app/models/PageHeaderAttributes';
 import { observer } from 'mobx-react-lite';
+import LoadingComponent from '../app/layout/LoadingComponent';
 
 
 
 const Home = () => {
-	const {pageHeaderStore : {setHeader}} = useStore();
-	const headerContent = 'Solar system';
-	const subHeaderContent = 'Characteristics of its planets.';
+	const {pageHeaderStore : {setHeader}, planetStore: {loadingScreen}} = useStore();
 
 	useEffect(() => {
 		const attr = new PageHeaderAttributesValues();
 		attr.content =  'Solar System';
 		attr.subContent = 'Characteristics of its planets.';
 		setHeader(attr);
-	}, [setHeader])
+	}, [setHeader]);
+
+	if (loadingScreen) return <LoadingComponent content='Loading App...' />
 
 	return (		
 		<Segment style={{ padding: '4em 0em' }} vertical inverted={false}>

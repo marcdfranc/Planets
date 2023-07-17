@@ -11,7 +11,7 @@ public class List
 {
 	public class Query : IRequest<Result<PagedList<PlanetResponse>>>
 	{
-		public PagingParams Params { get; set; }
+		public PagingParams? Params { get; set; }
 	}
 
     public class Handler : IRequestHandler<Query, Result<PagedList<PlanetResponse>>>
@@ -32,8 +32,8 @@ public class List
                 .AsQueryable();
 
             return Result<PagedList<PlanetResponse>>.Success(
-                await PagedList<PlanetResponse>.CreateAsync(query, request.Params.PageNumber, request.Params.PageSize)
-            );            
+                await PagedList<PlanetResponse>.CreateAsync(query, request.Params?.PageNumber?? 1, request.Params?.PageSize?? 10)
+            );
         }
     }
 }

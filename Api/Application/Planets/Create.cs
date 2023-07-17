@@ -11,7 +11,7 @@ public class Create
 {
 	public class Command : IRequest<Result<Unit>>
 	{
-		public PlanetData Planet { get; set; }
+		public PlanetData? Planet { get; set; }
 	}
 
     public class Handler : IRequestHandler<Command, Result<Unit>>

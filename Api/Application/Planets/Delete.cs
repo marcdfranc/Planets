@@ -24,7 +24,7 @@ public class Delete
         {
             var planet = await _context.Planets.FindAsync(request.Id);
             
-            if (planet == null) return null;
+            if (planet == null) return null!;
 
             _context.Planets.Remove(planet);
 

@@ -11,7 +11,7 @@ public class Edit
 	public class Command : IRequest<Result<Unit>>
 	{
         public Guid Id { get; set; }
-        public PlanetData Planet { get; set; }
+        public PlanetData? Planet { get; set; }
     }
 
     public class Handler : IRequestHandler<Command, Result<Unit>>
@@ -28,7 +28,7 @@ public class Edit
         {
             var planet = await _context.Planets.FindAsync(request.Id);
                
-            if (planet == null) return null;
+            if (planet == null) return null!;
 
             _mapper.Map(request.Planet, planet);
 

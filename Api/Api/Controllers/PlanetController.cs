@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Planets;
 using Application.Core;
 using Swashbuckle.AspNetCore.Annotations;
+using Api.Dtos;
+using System.Xml.Linq;
 
 namespace Api.Controllers;
 
@@ -24,6 +26,7 @@ public class PlanetController : BaseApiController
     [HttpGet]
     [Produces("application/json")]
     [SwaggerOperation(summary: "Get Planets", OperationId = "GetPlanets", Description = "returns a paged array of Planets")]
+    [ProducesResponseHeaderType(Type = typeof(Pagination), HttpCode = StatusCodes.Status200OK, Name = "Pagination")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

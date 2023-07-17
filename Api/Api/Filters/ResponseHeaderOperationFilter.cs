@@ -20,10 +20,10 @@ public class ResponseHeaderOperationFilter : IOperationFilter
 
                 var hValue = new OpenApiHeader
                 {
-                    Description = attr.Description,
-                    Schema = context.SchemaGenerator.GenerateSchema(attr.Type, context.SchemaRepository)
+                    Description = attr?.Description,
+                    Schema = context.SchemaGenerator.GenerateSchema(attr?.Type, context.SchemaRepository)
                 };
-                response.Headers.Add(attr.Name, hValue);
+                response.Headers.Add(attr?.Name, hValue);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Seeds;
 
 namespace Persistence;
@@ -11,7 +12,7 @@ public class Seed
         var hasChanges = false;
 
         // TO DO register user for back-end
-        if (1 != 1)
+       /* if (1 != 1)
         {
             hasChanges = true;
             var users = new List<AppUser>
@@ -39,8 +40,9 @@ public class Seed
             /*foreach (var user in users)
             {
                 await userManager.CreateAsync(user, "WebWeb2023!");
-            }*/
+            }
         }
+       */
 
         if (!context.Planets.Any())
         {
@@ -53,7 +55,18 @@ public class Seed
             await context.Planets.AddAsync(Saturn.GetPlanet());
             await context.Planets.AddAsync(Uranus.GetPlanet());
             await context.Planets.AddAsync(Neptune.GetPlanet());
+            await context.Planets.AddAsync(Pluto.GetPlanet());
         }
+
+        // clean test data
+        var planets = await context.Planets.Where(p => p.Position < 0).ToListAsync();
+
+        if (planets.Any())
+        {
+            context.Planets.RemoveRange(planets);
+            hasChanges = true;
+        }
+            
         
         if (hasChanges) await context.SaveChangesAsync();
     }

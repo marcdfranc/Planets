@@ -113,6 +113,13 @@
         "responses": {
           "200": {
             "description": "Success",
+            "headers": {
+              "Pagination": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pagination"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -417,6 +424,28 @@
   },
   "components": {
     "schemas": {
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PlanetData": {
         "required": [
           "circular",
@@ -553,7 +582,7 @@
       }
     },
     "securitySchemes": {
-      "ApiKeyAuth": {
+      "Bearer": {
         "type": "apiKey",
         "description": "x-api-key Authorization header using x-api-key scheme. Example \"x-api-key: {API_KEY}\"",
         "name": "x-api-key",
@@ -563,7 +592,7 @@
   },
   "security": [
     {
-      "ApiKeyAuth": [ ]
+      "Bearer": [ ]
     }
   ]
 }

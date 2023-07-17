@@ -1,5 +1,4 @@
-﻿using System;
-namespace Api.Middleware;
+﻿namespace Api.Middleware;
 
 public class ApiKeyMiddleware
 {

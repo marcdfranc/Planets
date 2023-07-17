@@ -32,7 +32,7 @@ public class Detail
                 .ProjectTo<PlanetResponse>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
 
-            if (planet == null) return null;
+            if (planet == null) return null!;
 
             return Result<PlanetResponse>.Success(planet);            
         }

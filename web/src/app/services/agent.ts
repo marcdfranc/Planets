@@ -10,14 +10,17 @@ const sleep = (delay: number) => {
 	});
  }
 
-// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
-axios.defaults.baseURL = 'http://localhost:5188/api';
+axios.defaults.headers.common = {
+	"X-API-Key": process.env.REACT_APP_API_KEY,
+};
 
 // aply delay
 axios.interceptors.response.use(async (response) => {
 	try {
 		if (process.env.NODE_ENV == 'development') await sleep(1000);
+		// console.log(response);
 		return response;
 	} catch (error) {		
 		console.log(error);
