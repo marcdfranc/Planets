@@ -32,11 +32,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseMiddleware<ApiKeyMiddleware>();
 
 // app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapFallbackToController("Index", "Fallback");
+
 
 using (var scope = app.Services.CreateScope())
 {

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { Button, Icon, Segment, Menu } from 'semantic-ui-react'
+import React from 'react'
+import { Button, Icon, Segment } from 'semantic-ui-react'
 import { MenuToogle } from './MenuToogle'
-import { MenuAttributes, MenuAttributesValues } from '../../models/MenuAttributes'
 import { NavigationArrow } from './NavigationArrow'
 
 import MenuList from './MenuList'
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
 	
@@ -19,7 +19,7 @@ const Navigation = () => {
 				</label>
 			</section>
 			<Segment stacked className='BtnHome'>
-				<Button primary size='huge' floated='right' >
+				<Button as={Link} to="/" primary size='huge' floated='right' >
 					Home
 					<Icon className='right' name='home'  />
 				</Button>

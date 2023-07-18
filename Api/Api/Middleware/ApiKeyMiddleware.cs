@@ -14,25 +14,29 @@ public class ApiKeyMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        if (string.IsNullOrWhiteSpace(_appKey))
+        if (context.Request.Path.StartsWithSegments("/api", StringComparison.OrdinalIgnoreCase))
         {
-            context.Response.StatusCode = 500;
-            await context.Response.WriteAsync("Credentials not Configured");
-            return;
-        }
+            if (string.IsNullOrWhiteSpace(_appKey))
+            {
+                context.Response.StatusCode = 500;
+                await context.Response.WriteAsync("Credentials not Configured");
+                return;
+            }
 
-        if (!context.Request.Headers.TryGetValue(APIKEY, out var extractedApiKey))
-        {
-            context.Response.StatusCode = 401;
-            await context.Response.WriteAsync("Credentials were not provided");
-            return;
-        }
 
-        if (!_appKey.Equals(extractedApiKey))
-        {
-            context.Response.StatusCode = 401;
-            await context.Response.WriteAsync("Unauthorized");
-            return;
+            if (!context.Request.Headers.TryGetValue(APIKEY, out var extractedApiKey))
+            {
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("Credentials were not provided");
+                return;
+            }
+
+            if (!_appKey.Equals(extractedApiKey))
+            {
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("Unauthorized");
+                return;
+            }
         }
 
         await _next(context);
