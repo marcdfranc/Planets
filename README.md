@@ -9,10 +9,10 @@ Simple .Net 8 + React Demo application
 
 ## back-end
 
-Consists in an API for managing CRUD operations using a Postgres database, can be run from the command line on a machine with dotnet cli installed.
-The api depends on a postgres database that needs to be configured in the Appsettings.json file
-The API needs a key, which can be a randomly generated string or uuid.
-The appsetings.json file should look like the following.
+It consists of an API for managing CRUD operations using a Postgres database. It can be run from the command line on a machine with the dotnet cli installed.
+The API relies on a Postgres database that needs to be configured in the Appsettings.json file.
+The API needs a key, which can be a randomly generated string or a UUID.
+The appsettings.json file should look like this.
 
 ```json
 {
@@ -43,3 +43,18 @@ dotnet run Api.csproj
 If a proper connections string ios provided in appsetings.json the build will run the migrations to generate the database.
 
 
+## running front-end
+
+Create a .env.development file at the root of the web folder configuring the Api base Url and the API key to autjorize the APP.
+See an exampple below.
+
+```
+REACT_APP_API_URL=http://localhost:5188/api
+REACT_APP_API_KEY=<your-randon-api-key>
+```
+
+Use the terminal and navigate to the “/Web” folder and run the command.
+
+```bash
+npm start
+```

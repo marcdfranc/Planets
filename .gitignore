@@ -401,3 +401,4 @@ FodyWeavers.xsd
 /Api/Api/appsettings.Development.json
 /web/.env.development
 /Api/Api/appsettings.json
+/Api/Api/appsettings.Development.json
