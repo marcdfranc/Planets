@@ -398,3 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 /Api/Api/wwwroot
 /web/.env.production
+/Api/Api/appsettings.Development.json
+/web/.env.development
+/Api/Api/appsettings.json
